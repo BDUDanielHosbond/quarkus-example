@@ -4,7 +4,7 @@ metadata:
   name: quarkus-example
   annotations:
     github.com/project-slug: BDUDanielHosbond/quarkus-example
-    backstage.io/techdocs-ref: dir:/src/main/resources/META-INF/resources/openapi.yaml
+    backstage.io/techdocs-ref: dir:/src/main/resources/openapi.yaml
 spec:
   type: other
   lifecycle: unknown
