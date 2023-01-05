@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  title: Booking BFF Api
+  version: '1.0'
+paths:
+  /booking/meeting/time-slots:
+    post:
+      summary: Get available meeting time slots
+      operationId: Get meeting time slots
+      tags:
+        - meeting time slot
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeetingTimeSlotsRequest'
+      responses:
+        '200':
+          description: Getting meeting time slots
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingTimeSlotsResponse'
+
+components:
+  schemas:
+    MeetingTimeSlotsRequest:
+      type: object
+      properties:
+        provider:
+          description: Meeting time slot provider
+          type: string
+        context:
+          description: Where does the meeting take place
+          type: string
+        start:
+          description: Start of time slot request range
+          type: string
+        end:
+          description: End of time slot request range
+          type: string
+    MeetingTimeSlotsResponse:
+      type: object
+      properties:
+        provider:
+          description: Meeting time slot provider
+          type: string
+        meetingTimeSlots:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeetingTimeSlot'
+    MeetingTimeSlot:
+      type: object
+      properties:
+        start:
+          description: Time slot start
+          type: string
+        end:
+          description: Time slot end
+          type: string
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
